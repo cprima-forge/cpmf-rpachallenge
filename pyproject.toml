@@ -36,9 +36,6 @@ dependencies = [
 screenshots = [
     "pillow>=10.0",
 ]
-dev = [
-    "pytest>=8.0",
-]
 
 [project.urls]
 Homepage = "https://github.com/cprima-forge/cpmf-rpachallenge"
@@ -51,3 +48,10 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/cpmf_rpachallenge"]
+
+[tool.uv]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
