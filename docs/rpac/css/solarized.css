@@ -1,0 +1,33 @@
+/* Solarized Light Color Palette */
+:root {
+  /* Base colors */
+  --sol-base03: #fdf6e3;  /* Background */
+  --sol-base02: #eee8d5;  /* Background highlights */
+  --sol-base01: #93a1a1;  /* Comments / secondary content */
+  --sol-base00: #839496;  /* Body text / default code */
+  --sol-base0:  #657b83;  /* Primary content */
+  --sol-base1:  #586e75;  /* Emphasis / headings */
+
+  /* Accent colors */
+  --sol-yellow:  #b58900;
+  --sol-orange:  #cb4b16;
+  --sol-red:     #dc322f;
+  --sol-magenta: #d33682;
+  --sol-violet:  #6c71c4;
+  --sol-blue:    #268bd2;
+  --sol-cyan:    #2aa198;
+  --sol-green:   #859900;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--sol-base03);
+  color: var(--sol-base0);
+  line-height: 1.6;
+}
