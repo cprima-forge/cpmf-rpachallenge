@@ -72,3 +72,7 @@ exclude = [
 dev = [
     "pytest>=8.0",
 ]
+docs = [
+    "mkdocs-material>=9.7.0",
+    "pymdown-extensions>=10.17.2",
+]

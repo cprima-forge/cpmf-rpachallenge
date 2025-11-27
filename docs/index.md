@@ -7,7 +7,7 @@ Python RPA Challenge SDK - A comprehensive toolkit for RPA automation challenges
 - [Getting Started](code/getting-started.md) - Start here
 - [API Surface](code/surface.md) - Public API documentation
 - [Requirements](plan/requirements.md) - Project requirements
-- [RPA Challenge App](apps/rpac/index.html) - Interactive challenge application
+- [RPA Challenge App](../apps/rpac/) - Interactive challenge application
 
 ## Overview
 

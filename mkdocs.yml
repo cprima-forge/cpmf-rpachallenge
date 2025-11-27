@@ -47,7 +47,6 @@ nav:
   - Operations:
       - Support: operate/support.md
       - Troubleshooting: operate/troubleshooting.md
-  - RPA Challenge App: apps/rpac/index.html
 
 markdown_extensions:
   - admonition
