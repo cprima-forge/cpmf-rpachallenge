@@ -1,0 +1,83 @@
+/* Solarized Light color scheme for MkDocs Material theme */
+
+:root {
+  /* Solarized Light colors */
+  --sol-base03:  #002b36;
+  --sol-base02:  #073642;
+  --sol-base01:  #586e75;
+  --sol-base00:  #657b83;
+  --sol-base0:   #839496;
+  --sol-base1:   #93a1a1;
+  --sol-base2:   #eee8d5;
+  --sol-base3:   #fdf6e3;
+  --sol-yellow:  #b58900;
+  --sol-orange:  #cb4b16;
+  --sol-red:     #dc322f;
+  --sol-magenta: #d33682;
+  --sol-violet:  #6c71c4;
+  --sol-blue:    #268bd2;
+  --sol-cyan:    #2aa198;
+  --sol-green:   #859900;
+}
+
+/* Apply Solarized Light theme */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--sol-base01);
+  --md-primary-fg-color--light: var(--sol-base0);
+  --md-primary-fg-color--dark: var(--sol-base02);
+  --md-primary-bg-color: var(--sol-base3);
+  --md-accent-fg-color: var(--sol-cyan);
+  --md-accent-fg-color--transparent: rgba(42, 161, 152, 0.1);
+  
+  /* Text colors */
+  --md-default-fg-color: var(--sol-base00);
+  --md-default-fg-color--light: var(--sol-base0);
+  --md-default-fg-color--lighter: var(--sol-base1);
+  --md-default-fg-color--lightest: var(--sol-base2);
+  --md-default-bg-color: var(--sol-base3);
+  --md-default-bg-color--light: var(--sol-base2);
+  --md-default-bg-color--lighter: var(--sol-base2);
+  --md-default-bg-color--lightest: var(--sol-base2);
+  
+  /* Code colors */
+  --md-code-fg-color: var(--sol-base01);
+  --md-code-bg-color: var(--sol-base2);
+  --md-code-hl-color: rgba(181, 137, 0, 0.15);
+  
+  /* Links */
+  --md-typeset-a-color: var(--sol-blue);
+  
+  /* Admonition colors */
+  --md-admonition-fg-color: var(--sol-base00);
+  --md-admonition-bg-color: var(--sol-base2);
+}
+
+/* Header customization */
+.md-header {
+  background-color: var(--sol-base02);
+  color: var(--sol-base1);
+}
+
+/* Navigation customization */
+.md-nav {
+  color: var(--sol-base00);
+}
+
+.md-nav__link--active {
+  color: var(--sol-blue);
+}
+
+/* Code blocks */
+.md-typeset pre > code {
+  background-color: var(--sol-base2);
+}
+
+/* Tables */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--sol-base1);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--sol-base2);
+  color: var(--sol-base01);
+}

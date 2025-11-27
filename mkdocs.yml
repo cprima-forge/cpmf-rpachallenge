@@ -1,0 +1,64 @@
+site_name: cpmf-rpachallenge
+site_description: Python RPA Challenge SDK
+site_url: https://cprima-forge.github.io/cpmf-rpachallenge/
+repo_url: https://github.com/cprima-forge/cpmf-rpachallenge
+repo_name: cprima-forge/cpmf-rpachallenge
+
+theme:
+  name: material
+  palette:
+    # Solarized Light theme
+    primary: custom
+    accent: cyan
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+extra_css:
+  - stylesheets/solarized.css
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Getting Started: code/getting-started.md
+      - Contributing: code/contributing.md
+  - Code:
+      - API Surface: code/surface.md
+      - Internals: code/internals.md
+  - Planning:
+      - Requirements: plan/requirements.md
+      - Constraints: plan/constraints.md
+      - Acceptance Criteria: plan/acceptance-criteria.md
+      - Architecture Decisions:
+          - Dual Paradigm: plan/adr/0001-dual-paradigm.md
+          - Side Effect Taxonomy: plan/adr/0002-side-effect-taxonomy.md
+  - Testing:
+      - Developer Tests: test/developer-tests.md
+      - Coverage: test/coverage.md
+      - Pathkeeper: test/pathkeeper.md
+  - Deployment:
+      - Publishing: deploy/publish.md
+      - Release Process: deploy/release.md
+  - Operations:
+      - Support: operate/support.md
+      - Troubleshooting: operate/troubleshooting.md
+  - RPA Challenge App: apps/rpac/index.html
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
