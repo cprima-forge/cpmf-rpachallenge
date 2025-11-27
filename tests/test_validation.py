@@ -1,6 +1,7 @@
 """Tests for data validation."""
 
-from cpmf_rpachallenge import ChallengeRecord, DataValidator
+# Modern API - import from domain
+from cpmf_rpachallenge.domain import ChallengeRecord, DataValidator
 
 
 def test_valid_record():
