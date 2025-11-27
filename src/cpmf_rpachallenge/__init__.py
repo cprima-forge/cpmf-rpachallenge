@@ -33,6 +33,7 @@ from .backends import Backend, PlaywrightBackend
 # Data access (new API)
 from .fetch import fetch_challenge_excel, fetch_challenge_excel_async
 from .records import (
+    EXCEL_HEADER_MAP,
     FORM_FIELD_MAP,
     HTML_TABLE_HEADER_MAP,
     RPA_CHALLENGE_SCHEMA,
@@ -100,6 +101,7 @@ __all__ = [
     "load_records",
     "ChallengeRecord",
     "RPA_CHALLENGE_SCHEMA",
+    "EXCEL_HEADER_MAP",
     "FORM_FIELD_MAP",
     "HTML_TABLE_HEADER_MAP",
     # Generic data layer

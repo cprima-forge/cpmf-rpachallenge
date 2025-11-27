@@ -34,6 +34,18 @@ FORM_FIELD_MAP = {
     "phone": "labelPhone",
 }
 
+# Excel header mapping (Excel column name -> schema field name)
+# Used by XlsxSource for header-based column mapping
+EXCEL_HEADER_MAP = {
+    "First Name": "first_name",
+    "Last Name": "last_name",
+    "Phone Number": "phone",
+    "Email": "email",
+    "Address": "address",
+    "Company Name": "company_name",
+    "Role in Company": "role",
+}
+
 # HTML table header mapping (th text -> schema field name)
 # Used by HtmlTableSource for header-based column mapping
 HTML_TABLE_HEADER_MAP = {
@@ -77,6 +89,9 @@ class ChallengeRecord:
 def from_xlsx(path: Path | str) -> DataSource[dict]:
     """Create data source from Excel file path.
 
+    Uses header-based column mapping to map Excel column names
+    (e.g., "First Name") to schema field names (e.g., "first_name").
+
     Args:
         path: Path to Excel file (.xlsx)
 
@@ -87,7 +102,7 @@ def from_xlsx(path: Path | str) -> DataSource[dict]:
         source = from_xlsx("challenge.xlsx")
         records = load_records(source)
     """
-    return XlsxSource(path, RPA_CHALLENGE_SCHEMA)
+    return XlsxSource(path, RPA_CHALLENGE_SCHEMA, header_map=EXCEL_HEADER_MAP)
 
 
 def from_html_table(
