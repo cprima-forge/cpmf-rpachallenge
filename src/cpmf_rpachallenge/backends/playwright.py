@@ -7,15 +7,19 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Callable
 
-from ..forms import Buttons, FormFields
-from ..readiness import ReadinessCheck, ReadinessResult
-from ..results import ResultData, Results
+from ..domain.selectors import Pages
+from ..domain.readiness import ReadinessCheck, ReadinessResult
+from ..domain.results import ResultData, Results
+
+# Backwards compatibility aliases
+FormFields = Pages.ChallengePage.Fields
+Buttons = Pages.ChallengePage.Buttons
 
 if TYPE_CHECKING:
     from playwright.async_api import Page as AsyncPage
     from playwright.sync_api import Page as SyncPage
 
-    from ..downloads import ChallengeRecord
+    from ..domain.records import ChallengeRecord
 
 
 class PlaywrightBackend:

@@ -8,9 +8,9 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Callable, Protocol, runtime_checkable
 
 if TYPE_CHECKING:
-    from ..records import ChallengeRecord
-    from ..readiness import ReadinessResult
-    from ..results import ResultData
+    from ..domain.records import ChallengeRecord
+    from ..domain.readiness import ReadinessResult
+    from ..domain.results import ResultData
 
 
 @runtime_checkable

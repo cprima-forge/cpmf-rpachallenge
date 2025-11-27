@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 from .fetch import fetch_challenge_excel
-from .records import ChallengeRecord, from_xlsx, load_records
+from .domain.records import ChallengeRecord, from_xlsx, load_records
 
 if TYPE_CHECKING:
     from .config import RpaChallengeConfig

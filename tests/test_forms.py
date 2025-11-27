@@ -1,6 +1,11 @@
 """Tests for form selectors."""
 
-from cpmf_rpachallenge import FormFields, Buttons
+# Modern API - import from domain.selectors
+from cpmf_rpachallenge.domain.selectors import Pages
+
+# Backwards compatibility aliases for existing tests
+FormFields = Pages.ChallengePage.Fields
+Buttons = Pages.ChallengePage.Buttons
 
 
 def test_form_field_selectors_exist():
