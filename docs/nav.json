@@ -1,0 +1,50 @@
+{
+  "sections": [
+    {
+      "title": "Getting Started",
+      "items": [
+        { "label": "Getting Started", "path": "./code/getting-started.md" },
+        { "label": "Contributing", "path": "./code/contributing.md" }
+      ]
+    },
+    {
+      "title": "Code",
+      "items": [
+        { "label": "API Surface", "path": "./code/surface.md" },
+        { "label": "Internals", "path": "./code/internals.md" }
+      ]
+    },
+    {
+      "title": "Planning",
+      "items": [
+        { "label": "Requirements", "path": "./plan/requirements.md" },
+        { "label": "Constraints", "path": "./plan/constraints.md" },
+        { "label": "Acceptance Criteria", "path": "./plan/acceptance-criteria.md" },
+        { "label": "ADR: Dual Paradigm", "path": "./plan/adr/0001-dual-paradigm.md" },
+        { "label": "ADR: Side Effects", "path": "./plan/adr/0002-side-effect-taxonomy.md" }
+      ]
+    },
+    {
+      "title": "Testing",
+      "items": [
+        { "label": "Developer Tests", "path": "./test/developer-tests.md" },
+        { "label": "Coverage", "path": "./test/coverage.md" },
+        { "label": "Pathkeeper", "path": "./test/pathkeeper.md" }
+      ]
+    },
+    {
+      "title": "Deployment",
+      "items": [
+        { "label": "Publishing", "path": "./deploy/publish.md" },
+        { "label": "Release Process", "path": "./deploy/release.md" }
+      ]
+    },
+    {
+      "title": "Operations",
+      "items": [
+        { "label": "Support", "path": "./operate/support.md" },
+        { "label": "Troubleshooting", "path": "./operate/troubleshooting.md" }
+      ]
+    }
+  ]
+}

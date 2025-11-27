@@ -1,0 +1,221 @@
+/* Documentation Layout */
+.docs-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Sidebar */
+.docs-sidebar {
+  background: var(--sol-base02);
+  border-right: 1px solid var(--sol-base01);
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+}
+
+.docs-header h1 {
+  color: var(--sol-base1);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.docs-header p {
+  color: var(--sol-base00);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+/* Navigation */
+.docs-nav-section {
+  margin-bottom: 1.5rem;
+}
+
+.docs-nav-section h2 {
+  color: var(--sol-base1);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.docs-nav-section ul {
+  list-style: none;
+}
+
+.docs-nav-section a {
+  display: block;
+  color: var(--sol-base0);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.docs-nav-section a:hover {
+  background: var(--sol-base03);
+  color: var(--sol-blue);
+}
+
+.docs-nav-section a.active {
+  background: var(--sol-base03);
+  color: var(--sol-blue);
+  font-weight: 600;
+}
+
+.docs-links {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--sol-base01);
+}
+
+.docs-links a {
+  display: block;
+  color: var(--sol-cyan);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.docs-links a:hover {
+  color: var(--sol-blue);
+}
+
+/* Content Area */
+.docs-content {
+  padding: 2rem 3rem;
+  overflow-y: auto;
+  background: var(--sol-base03);
+}
+
+.docs-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.btn-copy {
+  background: var(--sol-cyan);
+  color: var(--sol-base03);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.btn-copy:hover {
+  background: var(--sol-blue);
+}
+
+/* Markdown Content Styles */
+#markdown-content {
+  max-width: 800px;
+}
+
+#markdown-content h1 {
+  color: var(--sol-base1);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--sol-base02);
+  padding-bottom: 0.5rem;
+}
+
+#markdown-content h2 {
+  color: var(--sol-base1);
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+#markdown-content h3 {
+  color: var(--sol-base1);
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+#markdown-content p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+#markdown-content code {
+  background: var(--sol-base02);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+#markdown-content pre {
+  background: var(--sol-base02);
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+#markdown-content pre code {
+  background: none;
+  padding: 0;
+}
+
+#markdown-content a {
+  color: var(--sol-blue);
+  text-decoration: none;
+}
+
+#markdown-content a:hover {
+  text-decoration: underline;
+}
+
+#markdown-content ul, #markdown-content ol {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+#markdown-content li {
+  margin-bottom: 0.5rem;
+}
+
+#markdown-content blockquote {
+  border-left: 4px solid var(--sol-blue);
+  padding-left: 1rem;
+  margin-left: 0;
+  color: var(--sol-base00);
+  font-style: italic;
+}
+
+#markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+#markdown-content th, #markdown-content td {
+  border: 1px solid var(--sol-base02);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+#markdown-content th {
+  background: var(--sol-base02);
+  font-weight: 600;
+  color: var(--sol-base1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .docs-container {
+    grid-template-columns: 1fr;
+  }
+
+  .docs-sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--sol-base01);
+  }
+}
