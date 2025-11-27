@@ -8,7 +8,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Callable, Protocol, runtime_checkable
 
 if TYPE_CHECKING:
-    from ..downloads import ChallengeRecord
+    from ..records import ChallengeRecord
     from ..readiness import ReadinessResult
     from ..results import ResultData
 
