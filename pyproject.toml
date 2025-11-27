@@ -1,6 +1,6 @@
 [project]
 name = "cpmf-rpachallenge"
-version = "0.2.2"
+version = "0.3.0"
 description = "Playwright selectors and utilities for rpachallenge.com automation"
 readme = "README.md"
 license = "Apache-2.0"
