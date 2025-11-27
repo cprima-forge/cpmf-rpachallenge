@@ -38,6 +38,16 @@ from .records import (
     load_records,
 )
 
+# Generic data layer
+from .data import (
+    Column,
+    DataSource,
+    Schema,
+    collect,
+    filter_records,
+    map_records,
+)
+
 # Backwards compatibility (deprecated)
 from .downloads import Downloads
 
@@ -83,6 +93,13 @@ __all__ = [
     "ChallengeRecord",
     "RPA_CHALLENGE_SCHEMA",
     "FORM_FIELD_MAP",
+    # Generic data layer
+    "DataSource",
+    "Column",
+    "Schema",
+    "filter_records",
+    "map_records",
+    "collect",
     # Backwards compat (deprecated)
     "Downloads",
     # Results
