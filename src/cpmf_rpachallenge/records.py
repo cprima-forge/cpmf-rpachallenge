@@ -2,13 +2,13 @@
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable
+from typing import TYPE_CHECKING, Callable
 
-from playwright.async_api import Page
+if TYPE_CHECKING:
+    from playwright.async_api import Page
 
 from .data.protocol import DataSource
 from .data.schema import Column, Schema
-from .data.sources.html_table import HtmlTableSource
 from .data.sources.xlsx import XlsxSource
 
 # RPAChallenge schema with explicit types
@@ -91,7 +91,7 @@ def from_xlsx(path: Path | str) -> DataSource[dict]:
 
 
 def from_html_table(
-    page: Page,
+    page: "Page",
     table_selector: str,
     *,
     row_selector: str = "tbody tr",
@@ -123,6 +123,9 @@ def from_html_table(
         # Or use load_records helper (sync materialization)
         records = load_records(source)
     """
+    # Import here to avoid requiring Playwright as a hard dependency
+    from .data.sources.html_table import HtmlTableSource
+
     return HtmlTableSource(
         page,
         table_selector=table_selector,

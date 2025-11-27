@@ -1,6 +1,8 @@
 """Data sources - generic implementations."""
 
-from .html_table import HtmlTableSource
 from .xlsx import XlsxSource, default_row_to_dict
 
-__all__ = ["XlsxSource", "HtmlTableSource", "default_row_to_dict"]
+# HtmlTableSource requires Playwright (optional dependency)
+# Import it only when needed via lazy import in records.py
+
+__all__ = ["XlsxSource", "default_row_to_dict"]
