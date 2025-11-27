@@ -39,14 +39,22 @@ class FormManager {
     const currentData = this.data[this.currentRound];
     let correct = 0;
 
+    console.log(`[VALIDATE] Round ${this.currentRound + 1}, Expected data:`, currentData);
+
     this.fields.forEach(field => {
       const input = document.querySelector(`[ng-reflect-name="${field.name}"]`);
       const expected = currentData[field.excelCol];
-      if (input && input.value.trim() === expected.trim()) {
+      const actual = input ? input.value.trim() : '<not found>';
+      const match = input && input.value.trim() === expected.trim();
+
+      console.log(`  ${field.excelCol}: expected="${expected}" actual="${actual}" match=${match}`);
+
+      if (match) {
         correct++;
       }
     });
 
+    console.log(`[VALIDATE] Correct: ${correct}/${this.fields.length}`);
     return correct;
   }
 
