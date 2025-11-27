@@ -52,7 +52,7 @@ Open `index.html` in any modern browser. No server required.
 
 ```bash
 # Or use Python's built-in server
-cd docs/rpac
+cd apps/rpac
 python -m http.server 8000
 ```
 
@@ -64,15 +64,15 @@ This site is designed to be hosted on GitHub Pages from the `/docs` folder.
 
 ### Setup Steps:
 
-1. Push the `docs/rpac/` directory to your GitHub repository
+1. Push the `apps/rpac/` directory to your GitHub repository
 2. Go to **Settings** > **Pages**
-3. Set **Source** to "Deploy from a branch"
-4. Set **Branch** to `main` and folder to `/docs`
-5. Save and wait for deployment
+3. Set **Source** to "GitHub Actions"
+4. Create a workflow file (see below)
+5. Push to trigger deployment
 
 Your site will be available at:
 ```
-https://<username>.github.io/<repo>/docs/rpac/
+https://<username>.github.io/<repo>/apps/rpac/
 ```
 
 ## Excel Schema
@@ -92,7 +92,7 @@ The `challenge.xlsx` file contains 10 records with 7 fields each:
 ## File Structure
 
 ```
-docs/rpac/
+apps/rpac/
 ├── .nojekyll              # Disables Jekyll processing
 ├── index.html             # Main page
 ├── README.md              # This file
@@ -125,7 +125,7 @@ with sync_playwright() as p:
     page = browser.new_page()
 
     # Use your GitHub Pages URL or local server
-    page.goto("https://<username>.github.io/<repo>/docs/rpac/")
+    page.goto("https://<username>.github.io/<repo>/apps/rpac/")
 
     backend = PlaywrightBackend(page)
     client = RPAChallengeClient(backend=backend)
