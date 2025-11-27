@@ -12,14 +12,16 @@ Usage:
     result = await client.run_async()
 
 Data Access (new API):
-    from cpmf_rpachallenge import fetch_challenge_excel, from_xlsx, load_records
+    from cpmf_rpachallenge import fetch_challenge_excel, from_xlsx, from_html_table, load_records
 
-    # Procedural: download file
+    # From Excel file
     path = fetch_challenge_excel()
-
-    # Functional: create source + load
     source = from_xlsx(path)
     records = load_records(source, predicate=lambda r: r["role"] == "Manager")
+
+    # From HTML table
+    source = from_html_table(page, "table#dataTable")
+    records = load_records(source)
 """
 
 # Client (primary API)
@@ -32,8 +34,10 @@ from .backends import Backend, PlaywrightBackend
 from .fetch import fetch_challenge_excel, fetch_challenge_excel_async
 from .records import (
     FORM_FIELD_MAP,
+    HTML_TABLE_HEADER_MAP,
     RPA_CHALLENGE_SCHEMA,
     ChallengeRecord,
+    from_html_table,
     from_xlsx,
     load_records,
 )
@@ -89,10 +93,12 @@ __all__ = [
     "fetch_challenge_excel",
     "fetch_challenge_excel_async",
     "from_xlsx",
+    "from_html_table",
     "load_records",
     "ChallengeRecord",
     "RPA_CHALLENGE_SCHEMA",
     "FORM_FIELD_MAP",
+    "HTML_TABLE_HEADER_MAP",
     # Generic data layer
     "DataSource",
     "Column",
