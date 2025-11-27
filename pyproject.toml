@@ -36,6 +36,9 @@ dependencies = [
 screenshots = [
     "pillow>=10.0",
 ]
+html = [
+    "playwright>=1.40",
+]
 
 [project.urls]
 Homepage = "https://github.com/cprima-forge/cpmf-rpachallenge"

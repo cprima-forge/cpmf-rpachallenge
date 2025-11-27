@@ -4,8 +4,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable
 
+from playwright.async_api import Page
+
 from .data.protocol import DataSource
 from .data.schema import Column, Schema
+from .data.sources.html_table import HtmlTableSource
 from .data.sources.xlsx import XlsxSource
 
 # RPAChallenge schema with explicit types
@@ -29,6 +32,18 @@ FORM_FIELD_MAP = {
     "address": "labelAddress",
     "email": "labelEmail",
     "phone": "labelPhone",
+}
+
+# HTML table header mapping (th text -> schema field name)
+# Used by HtmlTableSource for header-based column mapping
+HTML_TABLE_HEADER_MAP = {
+    "First Name": "first_name",
+    "Last Name": "last_name",
+    "Phone Number": "phone",
+    "Email": "email",
+    "Address": "address",
+    "Company Name": "company_name",
+    "Role in Company": "role",
 }
 
 
@@ -57,10 +72,64 @@ class ChallengeRecord:
         return {FORM_FIELD_MAP[k]: getattr(self, k) for k in FORM_FIELD_MAP}
 
 
-# One-line factory - keeps XlsxSource generic
+# Factory functions - keep sources generic
+
 def from_xlsx(path: Path | str) -> DataSource[dict]:
-    """Create data source from Excel file path."""
+    """Create data source from Excel file path.
+
+    Args:
+        path: Path to Excel file (.xlsx)
+
+    Returns:
+        DataSource yielding dicts matching RPA_CHALLENGE_SCHEMA
+
+    Example:
+        source = from_xlsx("challenge.xlsx")
+        records = load_records(source)
+    """
     return XlsxSource(path, RPA_CHALLENGE_SCHEMA)
+
+
+def from_html_table(
+    page: Page,
+    table_selector: str,
+    *,
+    row_selector: str = "tbody tr",
+) -> DataSource[dict]:
+    """Create data source from HTML table.
+
+    Uses header-based column mapping (reads <th> cells) to map columns by name.
+    Skips columns not in schema (e.g., row number '#' column).
+
+    Args:
+        page: Async Playwright Page object (caller owns browser lifecycle)
+        table_selector: CSS selector for table root element
+        row_selector: CSS selector for data rows (default: "tbody tr")
+
+    Returns:
+        DataSource yielding dicts matching RPA_CHALLENGE_SCHEMA
+
+    Example:
+        # Caller navigates to page and shows table (async)
+        await page.goto("http://localhost:8003/?rounds=4")
+        await page.click("#toggleDataBtn")
+
+        # Load records from HTML table (async iteration)
+        source = from_html_table(page, "table#dataTable")
+        records = []
+        async for record in source.load():
+            records.append(ChallengeRecord.from_dict(record))
+
+        # Or use load_records helper (sync materialization)
+        records = load_records(source)
+    """
+    return HtmlTableSource(
+        page,
+        table_selector=table_selector,
+        row_selector=row_selector,
+        schema=RPA_CHALLENGE_SCHEMA,
+        header_map=HTML_TABLE_HEADER_MAP,
+    )
 
 
 def load_records(
