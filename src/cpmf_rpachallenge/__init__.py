@@ -173,4 +173,4 @@ __all__ = [
     "Buttons",  # DEPRECATED - use Pages.ChallengePage.Buttons
 ]
 
-__version__ = "0.3.0"  # Bumped for breaking changes
+__version__ = "0.3.1"
