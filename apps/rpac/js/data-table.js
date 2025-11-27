@@ -56,12 +56,10 @@ class DataTableManager {
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', async () => {
-  // Wait for data to be loaded (data.js loads first)
-  if (CHALLENGE_DATA.length === 0) {
-    console.warn('[DATA-TABLE] Waiting for challenge data...');
-    // Data should already be loaded by app.js, but add safety check
-    return;
-  }
+  // Wait for data loading promise
+  await loadChallengeData();
+
+  console.log('[DATA-TABLE] Data loaded, initializing...');
 
   // Get the actual number of rounds being used (from config.js)
   const actualRounds = CONFIG.TOTAL_ROUNDS;
