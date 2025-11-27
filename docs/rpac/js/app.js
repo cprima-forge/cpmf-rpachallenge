@@ -25,6 +25,12 @@ class App {
     this.formManager.renderForm();
     document.getElementById('challengeForm').style.display = 'block';
     document.getElementById('round').textContent = '1';
+
+    // Update header text with dynamic rounds
+    const headerRoundsEl = document.getElementById('headerRounds');
+    if (headerRoundsEl) {
+      headerRoundsEl.textContent = this.totalRounds;
+    }
   }
 
   bindEvents() {
