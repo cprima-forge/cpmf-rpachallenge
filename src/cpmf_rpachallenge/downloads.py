@@ -1,183 +1,89 @@
-"""Download utilities for rpachallenge.com"""
+"""DEPRECATED: Use fetch_challenge_excel() and from_xlsx() instead.
+
+This module is maintained for backwards compatibility only.
+All functionality has been moved to fetch.py and records.py.
+"""
 
 from __future__ import annotations
 
-import tempfile
-from dataclasses import dataclass
+import warnings
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-import httpx
-import openpyxl
+from .fetch import fetch_challenge_excel
+from .records import ChallengeRecord, from_xlsx, load_records
 
 if TYPE_CHECKING:
     from .config import RpaChallengeConfig
 
-
-@dataclass
-class ChallengeRecord:
-    """A single record from the challenge Excel file."""
-
-    first_name: str
-    last_name: str
-    company_name: str
-    role: str
-    address: str
-    email: str
-    phone: str
-
-    def as_form_data(self) -> dict[str, str]:
-        """Return data mapped to form field names (ng-reflect-name values)."""
-        return {
-            "labelFirstName": self.first_name,
-            "labelLastName": self.last_name,
-            "labelCompanyName": self.company_name,
-            "labelRole": self.role,
-            "labelAddress": self.address,
-            "labelEmail": self.email,
-            "labelPhone": self.phone,
-        }
+__all__ = ["Downloads", "ChallengeRecord"]
 
 
 class Downloads:
-    """Download link selectors and utilities."""
+    """DEPRECATED: Use fetch_challenge_excel() and from_xlsx() instead.
 
-    # The Excel file download link
+    This class is maintained for backwards compatibility.
+    New code should use:
+        - fetch_challenge_excel() for downloading
+        - from_xlsx() + load_records() for data access
+    """
+
+    # The Excel file download link (kept for reference)
     EXCEL_LINK = 'a[href*="challenge.xlsx"]'
     EXCEL_HREF = "./assets/downloadFiles/challenge.xlsx"
-
-    @staticmethod
-    def _get_excel_url(config: RpaChallengeConfig | None = None) -> str:
-        """Get Excel URL from config or default."""
-        if config is not None:
-            return config.excel_url
-        from .config import get_config
-        return get_config().excel_url
-
-    @staticmethod
-    def _get_download_dir(config: RpaChallengeConfig | None = None) -> Path | None:
-        """Get download directory from config or default."""
-        if config is not None:
-            return Path(config.download_dir) if config.download_dir else None
-        from .config import get_config
-        cfg = get_config()
-        return Path(cfg.download_dir) if cfg.download_dir else None
 
     @staticmethod
     def fetch_excel(
         target_dir: Path | str | None = None,
         config: RpaChallengeConfig | None = None,
     ) -> Path:
-        """Fetch the challenge Excel file to a local directory.
-
-        Args:
-            target_dir: Directory to save the file. If None, uses config or temp directory.
-            config: Configuration object. If None, uses global config.
-
-        Returns:
-            Path to the downloaded challenge.xlsx file.
-        """
-        # Resolve target directory
-        if target_dir is None:
-            target_dir = Downloads._get_download_dir(config)
-        if target_dir is None:
-            target_dir = Path(tempfile.mkdtemp(prefix="rpachallenge_"))
-        else:
-            target_dir = Path(target_dir)
-            target_dir.mkdir(parents=True, exist_ok=True)
-
-        target_path = target_dir / "challenge.xlsx"
-
-        excel_url = Downloads._get_excel_url(config)
-        response = httpx.get(excel_url, follow_redirects=True)
-        response.raise_for_status()
-
-        target_path.write_bytes(response.content)
-
-        return target_path
+        """DEPRECATED: Use fetch_challenge_excel() instead."""
+        warnings.warn(
+            "Downloads.fetch_excel() is deprecated; use fetch_challenge_excel() instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return fetch_challenge_excel(config=config, target_dir=target_dir)
 
     @staticmethod
     async def fetch_excel_async(
         target_dir: Path | str | None = None,
         config: RpaChallengeConfig | None = None,
     ) -> Path:
-        """Fetch the challenge Excel file asynchronously.
+        """DEPRECATED: Use fetch_challenge_excel_async() instead."""
+        warnings.warn(
+            "Downloads.fetch_excel_async() is deprecated; use fetch_challenge_excel_async() instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        from .fetch import fetch_challenge_excel_async
 
-        Args:
-            target_dir: Directory to save the file. If None, uses config or temp directory.
-            config: Configuration object. If None, uses global config.
-
-        Returns:
-            Path to the downloaded challenge.xlsx file.
-        """
-        # Resolve target directory
-        if target_dir is None:
-            target_dir = Downloads._get_download_dir(config)
-        if target_dir is None:
-            target_dir = Path(tempfile.mkdtemp(prefix="rpachallenge_"))
-        else:
-            target_dir = Path(target_dir)
-            target_dir.mkdir(parents=True, exist_ok=True)
-
-        target_path = target_dir / "challenge.xlsx"
-
-        excel_url = Downloads._get_excel_url(config)
-        async with httpx.AsyncClient() as client:
-            response = await client.get(excel_url, follow_redirects=True)
-            response.raise_for_status()
-
-        target_path.write_bytes(response.content)
-
-        return target_path
+        return await fetch_challenge_excel_async(config=config, target_dir=target_dir)
 
     @staticmethod
     def read_challenge_data(
         excel_path: Path | str | None = None,
         config: RpaChallengeConfig | None = None,
     ) -> list[ChallengeRecord]:
-        """Read the challenge Excel file and return structured records.
-
-        Args:
-            excel_path: Path to the Excel file. If None, fetches from web.
-            config: Configuration object. If None, uses global config.
-
-        Returns:
-            List of 10 ChallengeRecord objects ready for form filling.
-        """
+        """DEPRECATED: Use from_xlsx() + load_records() instead."""
+        warnings.warn(
+            "Downloads.read_challenge_data() is deprecated; use from_xlsx() + load_records() instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         if excel_path is None:
-            excel_path = Downloads.fetch_excel(config=config)
-
-        wb = openpyxl.load_workbook(excel_path)
-        sheet = wb.active
-
-        records = []
-        for row in sheet.iter_rows(min_row=2, max_row=11, values_only=True):
-            # Skip empty rows
-            if row[0] is None:
-                continue
-
-            records.append(
-                ChallengeRecord(
-                    first_name=str(row[0]),
-                    last_name=str(row[1]),
-                    company_name=str(row[2]),
-                    role=str(row[3]),
-                    address=str(row[4]),
-                    email=str(row[5]),
-                    phone=str(row[6]),  # Convert int to string for form input
-                )
-            )
-
-        return records
+            excel_path = fetch_challenge_excel(config=config)
+        return load_records(from_xlsx(excel_path))
 
     @staticmethod
-    def get_challenge_data(config: RpaChallengeConfig | None = None) -> list[ChallengeRecord]:
-        """Convenience method: fetch Excel and return records in one call.
-
-        Args:
-            config: Configuration object. If None, uses global config.
-
-        Returns:
-            List of 10 ChallengeRecord objects ready for form filling.
-        """
-        return Downloads.read_challenge_data(config=config)
+    def get_challenge_data(
+        config: RpaChallengeConfig | None = None,
+    ) -> list[ChallengeRecord]:
+        """DEPRECATED: Use fetch_challenge_excel() + from_xlsx() + load_records() instead."""
+        warnings.warn(
+            "Downloads.get_challenge_data() is deprecated; use fetch_challenge_excel() + from_xlsx() + load_records() instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        path = fetch_challenge_excel(config=config)
+        return load_records(from_xlsx(path))
