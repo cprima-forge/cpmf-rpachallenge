@@ -15,6 +15,16 @@ class App {
 
     this.bindEvents();
     this.updateRoundDisplay();
+
+    // Feature parity: Show form initially (like rpachallenge.com)
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    // Show the form immediately on page load
+    this.formManager.renderForm();
+    document.getElementById('challengeForm').style.display = 'block';
+    document.getElementById('round').textContent = '1';
   }
 
   bindEvents() {
