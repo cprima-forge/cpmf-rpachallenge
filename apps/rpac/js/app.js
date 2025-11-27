@@ -105,6 +105,21 @@ class App {
 }
 
 // Initialize app when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // Load data before initializing app
+  const loaded = await loadChallengeData();
+
+  if (!loaded || CHALLENGE_DATA.length === 0) {
+    // Show error message
+    document.querySelector('.challenge-area').innerHTML = `
+      <div class="error-message" style="text-align: center; color: var(--sol-red); padding: 2rem;">
+        <h2>Failed to load challenge data</h2>
+        <p>Please check the console for details and refresh the page.</p>
+      </div>
+    `;
+    return;
+  }
+
+  // Initialize app after data is loaded
   new App();
 });
