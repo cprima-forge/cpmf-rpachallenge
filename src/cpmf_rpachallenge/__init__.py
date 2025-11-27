@@ -69,7 +69,10 @@ from .validation import (
     RecordValidationResult,
 )
 
-# Selectors (for direct access if needed)
+# Selectors (Page Object pattern - recommended)
+from .selectors import Pages
+
+# Selectors (legacy flat structure - deprecated, kept for backwards compatibility)
 from .forms import Buttons, FormFields
 
 # Config
@@ -120,7 +123,9 @@ __all__ = [
     "DataValidationResult",
     "RecordValidationResult",
     "FieldError",
-    # Selectors
+    # Selectors (Page Object pattern)
+    "Pages",
+    # Selectors (legacy - deprecated)
     "FormFields",
     "Buttons",
     # Config

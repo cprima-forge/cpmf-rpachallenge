@@ -104,8 +104,14 @@ class HtmlTableSource(DataSource[dict[str, Any]]):
                     (k for k, v in self._header_map.items() if v == schema_name),
                     None
                 )
-                if html_header and html_header in header_texts:
-                    column_indices[schema_name] = header_texts.index(html_header)
+                # Case-insensitive match (CSS may transform text)
+                if html_header:
+                    matching_indices = [
+                        idx for idx, h in enumerate(header_texts)
+                        if h.lower() == html_header.lower()
+                    ]
+                    if matching_indices:
+                        column_indices[schema_name] = matching_indices[0]
             else:
                 # Try direct match (schema field name == header text, case-insensitive)
                 matching_headers = [

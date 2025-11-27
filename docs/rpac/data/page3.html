@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Table - Page 3</title>
+  <link rel="stylesheet" href="../css/solarized.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <style>
+    /* Pagination-specific styles */
+    .pagination {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+
+    .nav-item {
+      padding: 0.5rem 1rem;
+      background: var(--sol-orange);
+      color: var(--sol-base03);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .nav-item:not(.disabled):hover {
+      background: var(--sol-red);
+    }
+
+    .nav-item.disabled {
+      background: var(--sol-base01);
+      color: var(--sol-base02);
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    .page-info {
+      padding: 0.5rem 1rem;
+      color: var(--sol-base00);
+      font-weight: bold;
+    }
+
+    /* Table styles */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: var(--sol-base3);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--sol-base2);
+    }
+
+    .data-table th {
+      background: var(--sol-base2);
+      color: var(--sol-base01);
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    .data-table tbody tr:hover {
+      background: var(--sol-base2);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--sol-base01);
+    }
+
+    header h1 {
+      color: var(--sol-orange);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--sol-base00);
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Paginated Data Table</h1>
+      <p>Page 3 of 4</p>
+    </header>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Company Name</th>
+          <th>Role in Company</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Stan</td>
+          <td>Hamm</td>
+          <td>40712462257</td>
+          <td>shamm@sugarwell.org</td>
+          <td>10 Dam Road</td>
+          <td>Sugarwell</td>
+          <td>Advisor</td>
+        </tr>
+        <tr>
+          <td>Michelle</td>
+          <td>Norton</td>
+          <td>40700854721</td>
+          <td>mnorton@gadget.co.uk</td>
+          <td>14 Bilton View</td>
+          <td>Gadget UK</td>
+          <td>Designer</td>
+        </tr>
+        <tr>
+          <td>Stacy</td>
+          <td>Shelby</td>
+          <td>40735416766</td>
+          <td>sshelby@techdev.com</td>
+          <td>19 Peterborough Avenue</td>
+          <td>TechDev</td>
+          <td>HR Manager</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <nav class="pagination">
+      <a class="nav-item" data-nav="first" href="page1.html"><<</a>
+      <a class="nav-item" data-nav="prev" href="page2.html"><</a>
+      <span class="page-info">Page 3 of 4</span>
+      <a class="nav-item" data-nav="next" href="page4.html">></a>
+      <a class="nav-item" data-nav="last" href="page4.html">>></a>
+    </nav>
+  </div>
+</body>
+</html>

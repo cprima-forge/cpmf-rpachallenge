@@ -1,7 +1,22 @@
 """Form field selectors for rpachallenge.com
 
+DEPRECATED: This module uses a flat selector structure. For better organization,
+use the Page Object pattern instead:
+
+    Old (deprecated):
+        from cpmf_rpachallenge import FormFields, Buttons
+        page.fill(FormFields.FIRST_NAME, "John")
+        page.click(Buttons.START)
+
+    New (recommended):
+        from cpmf_rpachallenge import Pages
+        page.fill(Pages.ChallengePage.Fields.FIRST_NAME, "John")
+        page.click(Pages.ChallengePage.Buttons.START)
+
 The form fields change position after each submission, but the
 ng-reflect-name attribute remains stable and can be used to identify fields.
+
+This module is kept for backwards compatibility only.
 """
 
 
