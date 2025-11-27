@@ -37,15 +37,24 @@ class App {
   }
 
   submitForm() {
+    console.log('[APP] ========== SUBMIT FORM ==========');
+    console.log('[APP] Current round before validation:', this.formManager.currentRound);
+
     const correct = this.formManager.validateRound();
     this.scoring.addRoundScore(correct);
 
+    console.log('[APP] Adding score:', correct);
+    console.log('[APP] Total correct so far:', this.scoring.correctFields);
+
     const hasNext = this.formManager.nextRound();
+    console.log('[APP] Has next round?', hasNext);
+
     if (hasNext) {
       this.updateRound();
     } else {
       this.complete();
     }
+    console.log('[APP] =====================================\n');
   }
 
   updateRound() {

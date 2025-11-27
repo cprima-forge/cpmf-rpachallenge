@@ -6,11 +6,13 @@ class FormManager {
   }
 
   renderForm() {
+    console.log('[FORM] Rendering form for round', this.currentRound + 1);
     const form = document.getElementById('challengeForm');
     form.innerHTML = '';
 
     // Fisher-Yates shuffle
     const shuffled = [...this.fields].sort(() => Math.random() - 0.5);
+    console.log('[FORM] Field order after shuffle:', shuffled.map(f => f.name));
 
     shuffled.forEach(field => {
       const div = document.createElement('div');
@@ -33,6 +35,7 @@ class FormManager {
     submit.type = 'submit';
     submit.value = 'Submit';
     form.appendChild(submit);
+    console.log('[FORM] Form rendered with', this.fields.length, 'fields');
   }
 
   validateRound() {
