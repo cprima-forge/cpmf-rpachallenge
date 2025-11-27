@@ -24,19 +24,74 @@ header p {
   margin-bottom: 1rem;
 }
 
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .download-link {
   display: inline-block;
   padding: 0.5rem 1.5rem;
   background-color: var(--sol-orange);
   color: var(--sol-base03);
   text-decoration: none;
+  border: none;
   border-radius: 4px;
   font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .download-link:hover {
   background-color: var(--sol-red);
+}
+
+/* Data Table Container */
+.data-table-container {
+  background-color: var(--sol-base02);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.data-table-container h2 {
+  color: var(--sol-base1);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--sol-base03);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.data-table th {
+  background-color: var(--sol-orange);
+  color: var(--sol-base03);
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.data-table td {
+  padding: 0.75rem;
+  border-top: 1px solid var(--sol-base02);
+  color: var(--sol-base0);
+}
+
+.data-table tr:nth-child(even) {
+  background-color: var(--sol-base02);
+}
+
+.data-table tr:hover {
+  background-color: rgba(203, 75, 22, 0.1);
 }
 
 .challenge-area {
