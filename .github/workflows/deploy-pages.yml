@@ -5,6 +5,7 @@ on:
     branches: [develop]
     paths:
       - 'docs/**'
+      - 'apps/**'
       - 'mkdocs.yml'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
@@ -37,6 +38,9 @@ jobs:
 
       - name: Build MkDocs site
         run: mkdocs build --strict
+
+      - name: Copy apps directory to site
+        run: cp -r apps site/apps
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
