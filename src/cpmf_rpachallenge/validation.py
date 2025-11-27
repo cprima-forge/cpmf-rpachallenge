@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from .downloads import ChallengeRecord
+    from .records import ChallengeRecord
 
 
 @dataclass
