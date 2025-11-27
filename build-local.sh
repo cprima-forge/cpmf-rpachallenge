@@ -5,7 +5,7 @@ echo "Building MkDocs site..."
 uv run mkdocs build
 
 echo "Copying apps/ directory..."
-cp -r apps site/apps
+cp -r apps/rpac site/rpac
 
 echo ""
 echo "✓ Build complete!"
