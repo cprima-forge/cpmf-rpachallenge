@@ -1,8 +1,5 @@
 # Jekyll configuration for GitHub Pages
-# Serves content from ./apps/ directory
-
-# Source directory - GitHub Pages will serve from here
-source: apps
+# GitHub Actions workflow builds from ./apps/ directory
 
 # Base URL for the site (repository name)
 baseurl: /cpmf-rpachallenge
