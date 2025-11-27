@@ -9,6 +9,7 @@ from .data.schema import Column, Schema
 from .data.sources.xlsx import XlsxSource
 
 # RPAChallenge schema with explicit types
+# NOTE: Order doesn't matter since we map by column name from Excel headers
 RPA_CHALLENGE_SCHEMA: Schema = [
     Column("first_name", str),
     Column("last_name", str),
@@ -33,7 +34,10 @@ FORM_FIELD_MAP = {
 
 @dataclass
 class ChallengeRecord:
-    """Typed record for rpachallenge.com."""
+    """Typed record for rpachallenge.com.
+
+    NOTE: Field order doesn't matter since mapping is by column name from Excel headers.
+    """
 
     first_name: str
     last_name: str
