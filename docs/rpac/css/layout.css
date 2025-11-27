@@ -1,0 +1,103 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--sol-base02);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--sol-base1);
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: var(--sol-base00);
+  margin-bottom: 1rem;
+}
+
+.download-link {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--sol-orange);
+  color: var(--sol-base03);
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.download-link:hover {
+  background-color: var(--sol-red);
+}
+
+.challenge-area {
+  background-color: var(--sol-base02);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: var(--sol-base03);
+  border-radius: 4px;
+  border: 1px solid var(--sol-base01);
+}
+
+.timer,
+.round {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--sol-base1);
+}
+
+.timer span,
+.round span {
+  color: var(--sol-orange);
+  font-family: 'Courier New', monospace;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+}

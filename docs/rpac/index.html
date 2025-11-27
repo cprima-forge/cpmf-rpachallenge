@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPA Challenge</title>
+  <link rel="stylesheet" href="css/solarized.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>RPA Challenge</h1>
+      <p>Complete all 10 rounds as fast as possible</p>
+      <a href="assets/challenge.xlsx" class="download-link">Download Excel</a>
+    </header>
+
+    <div class="challenge-area">
+      <div class="stats">
+        <div class="timer">Time: <span id="timer">00:00.000</span></div>
+        <div class="round">Round: <span id="round">0</span> / <span class="total-rounds">10</span></div>
+      </div>
+
+      <button class="uiColorButton" id="startBtn">START</button>
+
+      <form id="challengeForm" style="display:none;">
+        <!-- Fields will be injected by form-manager.js -->
+      </form>
+
+      <div class="congratulations" style="display:none;">
+        <div class="message1">Congratulations!</div>
+        <div class="message2" id="resultMessage"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/scoring.js"></script>
+  <script src="js/form-manager.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
