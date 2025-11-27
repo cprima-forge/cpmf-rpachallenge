@@ -6,7 +6,6 @@ from typing import Callable
 
 from .data.protocol import DataSource
 from .data.schema import Column, Schema
-from .data.sources.html import iter_normalized_rows
 from .data.sources.xlsx import XlsxSource
 
 # RPAChallenge schema with explicit types

@@ -7,7 +7,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Callable
 
-from .downloads import ChallengeRecord, Downloads
+from .fetch import fetch_challenge_excel
+from .records import ChallengeRecord, from_xlsx, load_records
 from .validation import DataValidationResult, DataValidator
 
 if TYPE_CHECKING:
@@ -57,7 +58,8 @@ class RPAChallengeClient:
         Returns:
             List of 10 ChallengeRecord objects.
         """
-        return Downloads.get_challenge_data()
+        path = fetch_challenge_excel()
+        return load_records(from_xlsx(path))
 
     def validate_records(
         self,
