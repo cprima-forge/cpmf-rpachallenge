@@ -4,15 +4,15 @@
  */
 
 class ExcelGenerator {
-  constructor(data) {
-    this.data = data;
-  }
-
   /**
    * Generate and download Excel file
+   * Uses the SAME data as shown in the HTML table (respects rounds parameter)
    */
   generate() {
-    console.log('[EXCEL] Generating Excel file from CHALLENGE_DATA...');
+    // Get data from the data table manager (which already respects rounds parameter)
+    const data = window.dataTableManager ? window.dataTableManager.data : CHALLENGE_DATA;
+
+    console.log(`[EXCEL] Generating Excel file with ${data.length} records...`);
 
     // Create worksheet data
     const headers = ['First Name', 'Last Name', 'Phone Number', 'Email', 'Address', 'Company Name', 'Role in Company'];
@@ -20,7 +20,7 @@ class ExcelGenerator {
     const wsData = [headers];
 
     // Add data rows
-    this.data.forEach(record => {
+    data.forEach(record => {
       wsData.push([
         record.first_name,
         record.last_name,
@@ -59,7 +59,7 @@ class ExcelGenerator {
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-  const excelGenerator = new ExcelGenerator(CHALLENGE_DATA);
+  const excelGenerator = new ExcelGenerator();
 
   // Wire up generate button
   const generateBtn = document.getElementById('generateExcelBtn');

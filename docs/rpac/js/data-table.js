@@ -4,9 +4,13 @@
  */
 
 class DataTableManager {
-  constructor(data) {
-    this.data = data;
+  constructor(data, maxRounds) {
+    this.allData = data;
+    this.maxRounds = maxRounds;
+    this.data = data.slice(0, maxRounds); // Use only the requested number of rounds
     this.isVisible = false;
+
+    console.log(`[DATA-TABLE] Using ${this.data.length} records (max: ${maxRounds})`);
   }
 
   render() {
@@ -37,6 +41,8 @@ class DataTableManager {
 
     html += '</tbody>';
     table.innerHTML = html;
+
+    console.log(`[DATA-TABLE] Rendered table with ${this.data.length} rows`);
   }
 
   toggle() {
@@ -50,7 +56,10 @@ class DataTableManager {
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-  const dataTableManager = new DataTableManager(CHALLENGE_DATA);
+  // Get the actual number of rounds being used (from config.js)
+  const actualRounds = CONFIG.TOTAL_ROUNDS;
+
+  const dataTableManager = new DataTableManager(CHALLENGE_DATA, actualRounds);
   dataTableManager.render();
 
   // Wire up toggle button
@@ -58,4 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => dataTableManager.toggle());
   }
+
+  // Make dataTableManager globally accessible for excel-generator
+  window.dataTableManager = dataTableManager;
 });
